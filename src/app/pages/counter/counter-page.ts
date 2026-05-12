@@ -11,7 +11,6 @@ import { Component, signal} from '@angular/core';
   `
 })
 
-
 export class CounterPageComponent {
   counter = 10;
   counterSignal=signal(20)//SEÑAL
