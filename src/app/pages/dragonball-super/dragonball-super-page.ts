@@ -1,6 +1,8 @@
 
 import { Component, signal } from '@angular/core';
 import { CaracterListComponent } from "../../components/dragonball/caracter-list/caracter-list";
+import { CaraterAddComponent } from '../../components/dragonball/carater-add/carater-add';
+
 
 interface Character{
   id:number,
@@ -11,7 +13,7 @@ interface Character{
 @Component({
   selector: 'app-dragonball-super',
   templateUrl: './dragonball-super-page.html',
-  imports: [CaracterListComponent],
+  imports: [CaracterListComponent , CaraterAddComponent],
 })
 export class DragonballSuperPageComponent {
 
@@ -30,13 +32,14 @@ addCharacter() {
       return;
   } else {
       const newCharacter:Character = {
-        id:this.characters.length+1,
+        id:1000,
         name:this.name(),
-        power : this.power()
+        power:this.power()
       };
 
       //this.characters().push(newCharacter); opcion 1 no recomendada
-      this.characters.update((list)=>[...list,newCharacter]);
+      //this.characters.update((list)=>[...list,newCharacter]);
+      console.log({newCharacter});
 
       this.resertFile ();
   }

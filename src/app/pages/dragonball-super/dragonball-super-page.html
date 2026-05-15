@@ -1,35 +1,18 @@
 <h1>Dragonball Page</h1>
 <hr>
 <section class="row">
-  <div class ="col-12 col-sm-6">
-    <h3>Agregar: {{name()}}</h3>
+  <div class="col-12 col-sm-6">
 
-    <input
-    type="text"
-    class="form-control"
-    placeholder="Nombre"
-    [value]="name()"
-    (change)="name.set($event.target.value)"
-    >
+<dragonball-carater-add></dragonball-carater-add>
 
-    <h3>Poder: {{power()}}</h3>
-
-    <input
-    type="number"
-    class="form-control mt-2"
-    placeholder="Poder"
-    [value]=power()
-    (change)="power.set($event.target.valueAsNumber)"
-    >
-
-    <button (click)="addCharacter()" class="mt-2 btn btn-primary">Agregar</button>
   </div>
 
   <div class="col-12 col-sm-6">
 
-<dragonball-caracter-list [characters]="characters()"></dragonball-caracter-list>
-
-
+    <dragonball-caracter-list
+    listName="Listado de personajes"
+    [characters]="characters()">
+    </dragonball-caracter-list>
 
 
   </div>
