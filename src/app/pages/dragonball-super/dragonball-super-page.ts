@@ -27,23 +27,8 @@ characters = signal<Character[]>([
 
 ]);
 
-addCharacter() {
-  if (!this.name()|| !this.power()|| this.power()<0 ){
-      return;
-  } else {
-      const newCharacter:Character = {
-        id:1000,
-        name:this.name(),
-        power:this.power()
-      };
-
-      //this.characters().push(newCharacter); opcion 1 no recomendada
-      //this.characters.update((list)=>[...list,newCharacter]);
-      console.log({newCharacter});
-
-      this.resertFile ();
-  }
-
+addCharacter(character:Character) {
+this.characters.update(list=>[...list,character]);
 }
 
 
