@@ -1,16 +1,25 @@
+import { Character } from './../../interface/character.interface';
 import { effect, Injectable, signal } from '@angular/core';
-import { Character } from '../../interface/character.interface';
+
+
+
+//FUNCION
+const loaddFromLocalStorage=():Character[]=>{
+const characters = localStorage.getItem('characters');
+return characters ? JSON.parse(characters):[ ];
+}
+
+
 
 @Injectable({providedIn: 'root'})//este no es mas que un decorador para dtransformar  mi clase que es un servicio
 export class DragonballService {
   constructor() { }
 
-//Señal normal
-characters = signal<Character[]>([
-{id: 1 , name: 'Goku',power:9001},
-{id: 2 , name: 'Vegeta',power:8000},
-
-]);
+//Señal normal + LA FUNCION
+characters = signal<Character[]>(loaddFromLocalStorage()
+//{id: 1 , name: 'Goku',power:9001},
+//{id: 2 , name: 'Vegeta',power:8000},
+);
 
 //efecto
 saveToLocalStorage=effect(()=>{
@@ -22,4 +31,8 @@ saveToLocalStorage=effect(()=>{
 addCharacter(character:Character) {
 this.characters.update(list=>[...list,character]);
 }
+
 }
+
+
+
